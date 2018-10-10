@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium, { StyleRoot } from 'radium';
-
-
 
 class App extends Component {
 
@@ -55,11 +52,7 @@ class App extends Component {
         font: 'inherit',
         border: '1px solid blue',
         padding: '8px',
-        cursor: 'pointer',
-        ':hover': {
-              backgroundColor: 'lightgreen',
-              color:'black'
-        }
+        cursor: 'pointer'       
     };
 
     //this is a cleaner mode to keep the template cleaner
@@ -98,8 +91,8 @@ class App extends Component {
     classes.push('bold'); 
   }
     return (
-      // wraping the ROOT component between the StyleRoot hight order function of the Radium to make media queries work !!!!
-      <StyleRoot>
+
+    
         <div className="App">
             <h1>React Lists components <br></br> and dynamic Styles with JS and Radium </h1>  
             {/* join will turn the array intro a string to be used as a class           */}
@@ -107,7 +100,7 @@ class App extends Component {
             <button style={style} onClick={this.showHideHandler}>Show or Hide</button>
             {persons}
         </div>
-      </StyleRoot>
+
     );
 
     // return React.createElement('div', {className:'App'}, React.createElement('h1', null, 'I\'m a React App'));
@@ -115,6 +108,6 @@ class App extends Component {
   }
 }
 
-export default Radium(App);
+export default App;
 //we use the higher order component -> Radium to add the capability of the inline styling with JavaScript
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -45,18 +45,10 @@ class App extends Component {
 
 
   render() {
-    //second method of styling in React and having the style scoped only for this component
-    const style = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border: '1px solid blue',
-        padding: '8px',
-        cursor: 'pointer'       
-    };
 
     //this is a cleaner mode to keep the template cleaner
     let persons = null;
+    let btnClass = '';
 
     if (this.state.displayCards) {
         persons = (
@@ -71,33 +63,29 @@ class App extends Component {
             
           </div>
         );
-
-        style.backgroundColor="red";
-        style[':hover'] = {
-                     backgroundColor: 'salmon',
-                     color:'black'
-        }
+        btnClass = classes.Red;
+      
   }
 
   // let classes = ['red','bold'].join(' '); // this will turn in to a single string valable css
 
   //to make a class dynamic we can proceed like follows:
-  const classes = [];
+  const assignedClasses = [];
   if (this.state.persons.length <= 2) {
-    classes.push('red'); 
+    assignedClasses.push(classes.red); 
   }
 
   if (this.state.persons.length <= 1) {
-    classes.push('bold'); 
+    assignedClasses.push(classes.bold); 
   }
     return (
 
     
-        <div className="App">
-            <h1>React Lists components <br></br> and dynamic Styles with JS and Radium </h1>  
+        <div className={classes.App}>
+            <h1>React Lists components and <br></br>Styles with inlined CSS scoped for each component </h1>  
             {/* join will turn the array intro a string to be used as a class           */}
-            <p className={classes.join(' ')}>This is really working ! </p>
-            <button style={style} onClick={this.showHideHandler}>Show or Hide</button>
+            <p className={assignedClasses.join(' ')}>This is really working ! </p>
+            <button className={btnClass} onClick={this.showHideHandler}>Show or Hide</button>
             {persons}
         </div>
 
